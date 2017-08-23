@@ -24,6 +24,11 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+
+        <!-- bootstrap lightbox plugin-->
+    	<link rel="stylesheet" href="assets/css/bootstrap-lightbox.min.css">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
         <!-- css -->
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
@@ -65,12 +70,17 @@
                 <!-- populate gifs here -->
                 <div class="col-md-8">
                     <div class="gif-display">
-
+                        <!-- where thumbnails go -->
                     </div>
                 </div>
-
+                <div id="demoLightbox"  tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class='lightbox-content'>
+                        <!-- lightbox goes here -->
+                    </div>
+                </div>
             </div>
         </div>
         <script src="assets/javascript/app.js" charset="utf-8"></script>
+    	<script src="assets/javascript/bootstrap-lightbox.min.js"></script>
     </body>
 </html>
