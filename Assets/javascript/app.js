@@ -35,11 +35,8 @@ $.ajax({
     $('#add').click(function() {
         tvShow = ($('#newShow').val());
         createButton(tvShow);
-        $("#newShow").click(function () {
-          $(this).val('');
-          $(this).attr('placeholder', 'New Show');
-        });
-
+        $('#newShow').val('');
+        $('#newShow').attr('placeholder', 'New Show');
     });
 
 
