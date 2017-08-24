@@ -7,20 +7,36 @@ var btnList = ['game of thrones', 'the walking dead', 'firefly', 'star trek', 'd
 // create button
 function createButton (tvShow) {
     var $button = $('<button><span>' + tvShow + '</span>');
-    $button.addClass('class="btn btn-primary"')
+    $button.addClass("btn btn-default")
     $button.attr('label', tvShow);
-    $button.attr('val', tvShow);
+    $button.val(tvShow);
 
     $('.buttons-display').append($button);
     console.log($button);
 }
 
+// loop through btnList and make buttons
 function originalButtons() {
     for (var i = 0; i<btnList.length; i++) {
     createButton(btnList[i])
     }
 }
 
+// get input value and create new button and clear input value
+function newButton() {
+    tvShow = ($('#newShow').val());
+    createButton(tvShow);
+    $('#newShow').val('');
+    $('#newShow').attr('placeholder', 'New Show');
+}
+
+//////////////////////////scope problem right here i think///////////////// 1 of 2
+
+// get button value
+function getBtnValue() {
+    var $btnValue = $(this).val();
+    console.log($btnValue);
+}
 
 $.ajax({
     url: queryURL,
@@ -33,10 +49,15 @@ $.ajax({
 
     // add new button
     $('#add').click(function() {
-        tvShow = ($('#newShow').val());
-        createButton(tvShow);
-        $('#newShow').val('');
-        $('#newShow').attr('placeholder', 'New Show');
+        newButton();
+    });
+
+
+//////////////////////////scope problem right here i think///////////////// 2 of 2
+    // load content on click of one of tvshow buttons
+    $('.btn').click(function() {
+        alert(getBtnValue())
+
     });
 
 
