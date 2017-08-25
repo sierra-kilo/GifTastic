@@ -1,5 +1,3 @@
-// Example queryURL for Giphy API
-var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
 
 // original button list
 var btnList = ['game of thrones', 'the walking dead', 'firefly', 'star trek', 'doctor who', 'supernatural', 'xena', 'x-files', 'quantum leap', 'futurama', 'stranger things', 'lost'];
@@ -7,7 +5,7 @@ var btnList = ['game of thrones', 'the walking dead', 'firefly', 'star trek', 'd
 // create button
 function createButton (tvShow) {
     var $button = $('<button><span>' + tvShow + '</span>');
-    $button.addClass("btn btn-default")
+    $button.addClass("btn btn-default showBtn")
     $button.attr('label', tvShow);
     $button.val(tvShow);
 
@@ -30,13 +28,13 @@ function newButton() {
     $('#newShow').attr('placeholder', 'New Show');
 }
 
-//////////////////////////scope problem right here i think///////////////// 1 of 2
+function loadStills(tvShow) {
 
-// get button value
-function getBtnValue() {
-    var $btnValue = $(this).val();
-    console.log($btnValue);
 }
+
+// Example queryURL for Giphy API
+// var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
 
 $.ajax({
     url: queryURL,
@@ -52,11 +50,10 @@ $.ajax({
         newButton();
     });
 
-
-//////////////////////////scope problem right here i think///////////////// 2 of 2
     // load content on click of one of tvshow buttons
-    $('.btn').click(function() {
-        alert(getBtnValue())
+    $('.showBtn').click(function() {
+        var $btnValue = $(this).val();
+        console.log($btnValue);
 
     });
 
