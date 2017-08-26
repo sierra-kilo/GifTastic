@@ -29,12 +29,15 @@ function newButton() {
 }
 
 function loadStills(tvShow) {
+    var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5");
+xhr.done(function(data) { console.log("success got data", data); });
 
 }
 
 // Example queryURL for Giphy API
 // var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
-var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+// var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + $btnValue + "&api_key=YOUR_API_KEY&limit=10";
 
 $.ajax({
     url: queryURL,
@@ -51,23 +54,24 @@ $.ajax({
     });
 
     // load content on click of one of tvshow buttons
-    $('.showBtn').click(function() {
+    $(".buttons-display").on('click','.showBtn', function() {
         var $btnValue = $(this).val();
-        console.log($btnValue);
 
+        $(".gif-display").html('<img src="' + response.data[0].bitly_url + '" alt="gif">' );
+
+      var $image = $("<img>");
+
+      $image.attr("src", imageUrl);
+      $image.attr("alt", "image");
+
+      $(".gif-display").html($image);
     });
 
 
- //   $(".gif-display").html('<img src="' + response.data[0].bitly_url
- // + '" alt="gif">' );
+
 
     // var imageUrl = response.data[1].images.fixed_height_small_still.url;
-    // var $image = $("<img>");
-    //
-    // $image.attr("src", imageUrl);
-    // $image.attr("alt", "image");
-    //
-    // $(".gif-display").html($image);
+
 
 
 
