@@ -78,7 +78,9 @@ $( document ).ready(function() {
                 $(".gif-display").append('<img class="thumb" src="' + results[i].images.downsized_still.url + '" alt="gif">' );
             }
 
-            // 
+            // test on click play gif
+            
+
         });
     });
 });
