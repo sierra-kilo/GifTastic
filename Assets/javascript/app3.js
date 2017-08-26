@@ -51,7 +51,7 @@ $( document ).ready(function() {
         console.log($btnValue);
 
         // Constructing a queryURL using the animal name
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + $btnValue + "&api_key=dc6zaTOxFJmzC&limit=9";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + $btnValue + "&api_key=dc6zaTOxFJmzC&limit=9";
 
         $.ajax({
         url: queryURL,
@@ -79,7 +79,7 @@ $( document ).ready(function() {
             }
 
             // test on click play gif
-            
+
 
         });
     });
