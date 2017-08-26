@@ -79,7 +79,7 @@ $( document ).ready(function() {
             }
 
             // test on click play gif
-
+            // added a line
 
         });
     });
