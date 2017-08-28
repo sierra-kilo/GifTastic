@@ -17,7 +17,7 @@ function createButton (tvShow) {
 // loop through btnList and make buttons
 function originalButtons() {
     for (var i = 0; i<btnList.length; i++) {
-    createButton(btnList[i])
+        createButton(btnList[i])
     }
 }
 
@@ -75,8 +75,23 @@ $( document ).ready(function() {
 
             // loop through responses and display all stills
             for (var i = 0; i < results.length; i++) {
-                $(".gif-display").append('<img class="thumb" src="' + results[i].images.downsized_still.url + '" alt="gif">' );
+                $(".gif-display").append('<img src="' + results[i].images.downsized_still.url + '" alt="gif" data-still="' + results[i].images.downsized_still.url + '" data-animate="' + results[i].images.downsized_medium.url + '" data-state="still" class="gif">');
             }
+
+            $(".gif").on("click", function() {
+                // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+                var state = $(this).attr("data-state");
+                // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+                // Then, set the image's data-state to animate
+                // Else set src to the data-still value
+                if (state === "still") {
+                $(this).attr("src", $(this).attr("data-animate"));
+                $(this).attr("data-state", "animate");
+                } else {
+                $(this).attr("src", $(this).attr("data-still"));
+                $(this).attr("data-state", "still");
+                }
+                });
 
             // test on click play gif
             // added a line
