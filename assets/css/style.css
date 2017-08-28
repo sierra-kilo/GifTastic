@@ -3,4 +3,5 @@
     min-width: 250px;
     overflow: hidden;
     margin: 5px;
+    display: inline-block;
 }

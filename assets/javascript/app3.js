@@ -10,8 +10,6 @@ function createButton (tvShow) {
 
     $('.buttons-display').append($button);
 
-    // test log
-    console.log($button);
 }
 
 // loop through btnList and make buttons
@@ -47,9 +45,6 @@ $( document ).ready(function() {
         var str = $btnValue;
         $btnValue = str.replace(' ', '+');
 
-        // test log
-        console.log($btnValue);
-
         // Constructing a queryURL using the animal name
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + $btnValue + "&api_key=dc6zaTOxFJmzC&limit=9";
 
@@ -61,21 +56,19 @@ $( document ).ready(function() {
         // After data comes back from the request
         .done(function(response) {
 
-            // test log
-            console.log(response);
-
-            // test log
-            console.log(queryURL);
-
-            // test gif display
-            // $(".gif-display").html('<img src="' + response.data[0].images.downsized_still.url + '" alt="gif">' );
-
             // storing the data from the AJAX request in the results variable
             var results = response.data;
 
             // loop through responses and display all stills
             for (var i = 0; i < results.length; i++) {
-                $(".gif-display").append('<img src="' + results[i].images.downsized_still.url + '" alt="gif" data-still="' + results[i].images.downsized_still.url + '" data-animate="' + results[i].images.downsized_medium.url + '" data-state="still" class="gif">');
+                $(".gif-display").append('<img src="' +
+                results[i].images.downsized_still.url + '" data-still="' +
+                results[i].images.downsized_still.url + '" data-animate="' +
+                results[i].images.downsized_medium.url + '" data-state="still" class="gif" alt="gif">');
+
+                ///// rating wasnt aligning correctly but heres the code /////
+                // $(".gif-container-" + i).append('<div class="rating">');
+                // $(".rating").html('Rated: ' + results[i].rating);
             }
 
             $(".gif").on("click", function() {
@@ -92,9 +85,6 @@ $( document ).ready(function() {
                 $(this).attr("data-state", "still");
                 }
                 });
-
-            // test on click play gif
-            // added a line
 
         });
     });
